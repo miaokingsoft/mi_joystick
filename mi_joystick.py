@@ -25,7 +25,8 @@ servo_max = 600
 servo_mid = 375
 
 # 舵机
-pwm.set_pwm(1, 0, 375)
+pwm.set_pwm(0, 0, 375) #水平舵机回正
+pwm.set_pwm(1, 0, 375) #垂直舵机回正
 time.sleep(1)
 
 # 获取小米手柄
@@ -38,8 +39,8 @@ ss = servo_mid
 sudu = 10 #速度
 
 def IsJd(a):
-    if a>600:a=600
-    if a<150:a=150
+    if a>servo_max: a = servo_max
+    if a<servo_min: a = servo_min
 
     return math.ceil(a)
 
